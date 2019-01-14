@@ -30,14 +30,18 @@ class ArtistsController < ApplicationController
   end
 
   def update
-    @artist = Artist.find(params[:id])
-
-    @artist.update(artist_params)
-
-    if @artist.save
-      redirect_to @artist
+    if params[:id] && !Artist.exists?(params[:id])
+      redirect_to artists_path, alert: "Artist not found"
     else
-      render :edit
+      @artist = Artist.find(params[:id])
+
+      @artist.update(artist_params)
+
+      if @artist.save
+        redirect_to @artist
+      else
+        render :edit
+      end
     end
   end
 
