@@ -12,6 +12,7 @@ class ArtistsController < ApplicationController
   end
 
   def create
+    if params[:id] && Artist.exists? params[:id]
     @artist = Artist.new(artist_params)
 
     if @artist.save
