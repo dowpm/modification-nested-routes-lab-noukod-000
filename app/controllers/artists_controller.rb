@@ -12,9 +12,7 @@ class ArtistsController < ApplicationController
   end
 
   def create
-    if params[:id] && !Artist.exists? params[:id]
-      redirect_to artists_path, alert: "Artist not found"
-    else
+    
       @artist = Artist.new(artist_params)
 
       if @artist.save
@@ -26,7 +24,11 @@ class ArtistsController < ApplicationController
   end
 
   def edit
-    @artist = Artist.find(params[:id])
+    if params[:id] && !Artist.exists? params[:id]
+      redirect_to artists_path, alert: "Artist not found"
+    else
+      @artist = Artist.find(params[:id])
+    end
   end
 
   def update
