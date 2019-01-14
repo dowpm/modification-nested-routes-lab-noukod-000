@@ -33,6 +33,7 @@ class SongsController < ApplicationController
         @song = Song.new(artist_id: @artist.id)
       end
     else
+      @artist = nil
       @song = Song.new()
     end
   end
