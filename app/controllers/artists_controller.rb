@@ -17,7 +17,7 @@ class ArtistsController < ApplicationController
     if @artist.save
       redirect_to @artist
     else
-      render :new, alert: "Fail to save"
+      render :new, alert: "Fail to create"
     end
   end
 
