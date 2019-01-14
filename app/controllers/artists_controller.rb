@@ -22,7 +22,7 @@ class ArtistsController < ApplicationController
   end
 
   def edit
-    if params[:id] && !Artist.exists? params[:id]
+    if params[:id] && !Artist.exists?(params[:id])
       redirect_to artists_path, alert: "Artist not found"
     else
       @artist = Artist.find(params[:id])
